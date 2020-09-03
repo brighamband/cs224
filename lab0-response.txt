@@ -1,0 +1,38 @@
+Question 1	
+/users/guest/a/abrigham
+
+Question 2
+/users/guest/a/abrigham/CS224
+
+Question 3	
+None, all txt files
+
+Question 4	
+7 -- Bashful, Doc, Dopey, Grumpy,Happy, Sleep, Sneezy
+
+Question 5	
+5 -- bears, house, beds, bowls, chairs
+
+Question 6	
+13 -- 
+Goldilocks.txt (in /users/guest/a/abrigham/CS224/Lab0/f2),
+JustRight.txt, TooHard.txt, TooSoft.txt (/users/guest/a/abrigham/CS224/Lab0/f2/house/beds),
+JustRight.txt, TooCold.txt, TooHot.txt (/users/guest/a/abrigham/CS224/Lab0/f2/house/bowls),
+JustRight.txt, TooHard.txt, TooSoft.txt (/users/guest/a/abrigham/CS224/Lab0/f2/house/chairs)
+
+Question 7	
+cp Goldilocks.txt ./house/beds/
+
+Question 8	
+rm ./house/chairs/JustRight.txt
+
+Question 9	
+mv Theseus.txt Right/Right/Left/
+
+Question 10	
+/users/guest/a/abrigham/CS224/Lab0/f3/Right/Right/Left
+
+Question 11	
+The first number is 270
+The second number is 289
+The result is 224
