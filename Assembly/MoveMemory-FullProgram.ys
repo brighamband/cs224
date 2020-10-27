@@ -1,0 +1,50 @@
+    .pos 0
+init:   
+    irmovq stack, %rsp
+    call main
+    halt
+
+main:
+	irmovq $4, %rax  # Number of elements
+    irmovq src, %rcx
+    irmovq dest, %rdx
+    call loop
+    ret
+
+loop:
+    # While condition 
+    xorq %rdi, %rdi
+    subq %rdi, %rax
+    je end
+    
+    # Move a to b
+    mrmovq 0(%rcx), %rbx
+	rmmovq %rbx, 0(%rdx)
+
+    # Move src and dest to next element
+	irmovq $8, %rdi
+    addq %rdi, %rcx
+    addq %rdi, %rdx
+	
+	# Decrement counter, Go to top
+	irmovq $1, %rdi
+	subq %rdi, %rax
+	jmp loop
+
+end:
+    halt
+
+    .align 8
+src:
+    .quad 0xaaaa
+    .quad 0xbbbb
+    .quad 0xcccc
+    .quad 0xdddd
+dest:
+    .quad 0x1111
+    .quad 0x2222
+    .quad 0x3333
+    .quad 0x4444
+
+    .pos 0x150
+stack:

@@ -1,0 +1,82 @@
+
+#    int numElements = 10;
+#    int A[numElements] = {5, 8, 2, 29, 4, 7, 1, 1321, 46, 6};
+#    int temp;
+#    bool didSwap = false;
+
+#    do {
+#        didSwap = false;
+#        for (int i = 0; i <= (numElements - 2); i++) {
+#            if (A[i] > A[i + 1]) {
+#                didSwap = true;
+#                temp = A[i];
+#                A[i] = A[i + 1];
+#                A[i + 1] = temp;
+#            }
+#        }
+#    } while (didSwap);
+
+    
+    irmovq $10, %rax # Register storing how many blocks of data
+    
+    # YOUR CODE HERE
+
+    irmovq data, %rcx
+    mrmovq 0(%rcx), %rdx    # %rdx - first value
+    mrmovq 8(%rcx), %rbx   # %rbx - second value
+    xorq %r14, %r14         # %r14 - didSwap (starts false)
+
+do:
+    xorq %r14, %r14
+
+    for:
+        irmovq $2, %r10         # Check condition
+        rrmovq %rax, %r11
+        subq %r10, %r11
+        subq %r8, %r11
+        jl while
+    
+        rrmovq %rdx, %r10       # Compare
+        subq %rbx, %r10
+    
+        cmovg %rbx, %r10        # Swap
+        cmovg %rdx, %rbx
+        cmovg %r10, %rdx
+        
+        irmovq $1, %r10         # Set didSwap (%r14) to true
+        cmovg %r10, %r14
+        
+        #FIXME
+        irmovq $8, %r10
+        addq %r10, %rcx    # move to next spot in memory
+        
+        #FIXME
+        mrmovq 0(%rcx), %rdx
+        mrmovq 8(%rcx), %rbx
+    
+    	irmovq $1, %r10         # Increment counter, back to top
+    	addq %r10, %r8
+    	jmp for
+
+while:
+    xorq %r10, %r10         # Check while 
+    subq %r10, %r14
+    jne do
+    jmp end
+    
+end:
+    halt
+
+    .align 8
+data:
+    .quad 0x05
+    .quad 0x0a
+    .quad 0x08
+    .quad 0x02
+    .quad 0x01
+    .quad 0x03
+    .quad 0x06
+    .quad 0x04
+    .quad 0x09
+    .quad 0x07
+    

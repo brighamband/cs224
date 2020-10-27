@@ -1,0 +1,32 @@
+	xorq %rax, %rax             # Keep sum here, start with 0
+	irmovq list, %rcx
+
+loop:
+    # List Pt1 - Get value, add to running sum
+    mrmovq 0(%rcx), %rdx
+    addq %rdx, %rax
+    
+    # List Pt2 - Jump to next spot in memory
+    mrmovq 8(%rcx), %rcx    
+    andq %rcx, %rcx
+    jne loop
+    halt
+	
+# Sample linked list
+	.align 8
+list:
+	ele1:
+		.quad 0x01
+		.quad ele2
+	ele2:
+		.quad 0x10
+		.quad ele3
+	ele3:
+		.quad 0x100
+		.quad ele4
+	elex:
+		.quad 0x1000
+		.quad ele1
+	ele4:
+		.quad 0x10000
+		.quad 0
